@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background: #f8d7da; /* Vermelho claro para um toque romântico */
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden; /* Impede que os corações ultrapassem os limites da tela */
+    }
+
+    #login-container, #welcome-container {
+      position: relative;
+      z-index: 2;
+      background: #ffffff; /* Branco */
+      padding: 20px; /* Reduzindo o espaço ao redor do conteúdo */
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 80%; /* Ajusta a largura máxima para ocupar 80% da largura total da tela */
+      width: 100%;
+      transition: all 0.3s ease-in-out; /* Adicionando transição para um efeito mais suave */
+    }
+
+    #login-container h2, #welcome-container h2 {
+      font-size: 24px; /* Reduzindo o tamanho da fonte */
+      color: #dc3545; /* Vermelho mais escuro para um toque romântico */
+      margin-bottom: 10px; /* Reduzindo a margem inferior */
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px; /* Reduzindo a margem inferior */
+      color: #555;
+      font-size: 14px; /* Reduzindo o tamanho da fonte */
+    }
+
+    input {
+      width: calc(100% - 20px); /* Ajustando a largura para lidar com a borda de 10px em cada lado */
+      padding: 12px; /* Reduzindo o espaço interno */
+      margin-bottom: 10px; /* Reduzindo a margem inferior */
+      border: 1px solid #dc3545; /* Vermelho para combinar com o título */
+      border-radius: 5px;
+      font-size: 14px; /* Reduzindo o tamanho da fonte */
+      transition: all 0.3s ease-in-out; /* Adicionando transição para um efeito mais suave */
+    }
+
+    #login-button, #login-button:hover {
+      background: #dc3545; /* Vermelho para combinar com o título */
+      color: white;
+      padding: 12px 16px; /* Reduzindo o tamanho do botão */
+      border: none;
+      border-radius: 5px;
+      font-size: 16px; /* Reduzindo o tamanho da fonte */
+      cursor: pointer;
+      transition: all 0.3s ease-in-out; /* Adicionando transição para um efeito mais suave */
+    }
+
+    #login-button:hover {
+      background: #c82333; /* Vermelho mais escuro no hover para efeito de destaque */
+    }
+
+    #welcome-container {
+      display: none;
+      margin-top: 10px; /* Reduzindo a margem superior */
+      padding: 20px; /* Reduzindo o espaço ao redor do conteúdo */
+      background: #dc3545; /* Vermelho mais escuro para combinar com o tema */
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      color: #fff; /* Texto branco para contraste */
+      position: relative;
+      z-index: 1;
+    }
+
+    #welcome-container h2 {
+      font-size: 24px; /* Reduzindo o tamanho da fonte */
+      margin-bottom: 10px; /* Reduzindo a margem inferior */
+      color: #f8d7da; /* Vermelho claro para combinar com o plano de fundo */
+    }
+
+    #welcome-container p {
+      font-size: 14px; /* Reduzindo o tamanho da fonte */
+      margin-bottom: 20px; /* Reduzindo a margem inferior */
+      color: #fff; /* Texto branco para contraste */
+    }
+
+    #welcome-container img {
+      width: 30%;
+      max-width: 30%; /* Garante que a imagem não ultrapasse a largura do seu contêiner */
+      height: auto; /* Mantém a proporção da imagem */
+      border-radius: 10px;
+    }
+
+    .heart-animation {
+      position: absolute;
+      width: 10px; /* Reduzindo o tamanho do coração */
+      height: 10px; /* Reduzindo o tamanho do coração */
+      background-color: #c82333; /* Vermelho para combinar com o título */
+      border-radius: 50%;
+      animation: heartbeat 1s infinite alternate;
+    }
+
+    .ray-of-love {
+      position: absolute;
+      width: 1px; /* Reduzindo a largura do raio */
+      height: 100%;
+      background-color: #c82333; /* Vermelho para combinar com o título */
+      transform-origin: bottom center;
+      animation: ray 1s infinite alternate;
+    }
+
+    @keyframes heartbeat {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.2); /* Aumentando a escala do coração */
+      }
+    }
+
+    @keyframes ray {
+      from {
+        transform: scaleY(1);
+      }
+      to {
+        transform: scaleY(1.2); /* Aumentando a escala do raio */
+      }
+    }
+
+    /* Estilo adicional para tornar o layout responsivo para celular */
+    @media only screen and (max-width: 600px) {
+      #login-container, #welcome-container {
+        max-width: 100%; /* Ajusta a largura máxima para ocupar a largura total da tela */
+      }
+
+      #login-container, #welcome-container img {
+        border-radius: 0; /* Removendo a borda arredondada nas imagens */
+      }
+
+      #login-container input {
+        width: calc(100% - 24px); /* Ajustando a largura para lidar com a borda de 12px em cada lado */
+        padding: 10px; /* Reduzindo o espaço interno */
+      }
+
+      #login-button, #login-button:hover {
+        padding: 10px 14px; /* Reduzindo o tamanho do botão */
+        font-size: 14px; /* Reduzindo o tamanho da fonte */
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="login-container">
+  <h2>Login do Meu Coração</h2>
+  <label for="username">Nome:</label>
+  <input type="text" id="username" name="username" placeholder="Digite o nome">
+  <br>
+  <label for="password">Senha:</label>
+  <input type="password" id="password" name="password" placeholder="Digite a senha">
+  <br>
+  <button id="login-button" onclick="login()">Entrar</button>
+</div>
+
+<div id="welcome-container">
+  <h2>Bem-vinda, Maria Eduarda!</h2>
+  <p>Você já é a dona do meu coração! E a pessoa mais perfeita que existe no mundo, você merece tudo. Você é muito especial!</p>
+  <img src="img/403960337_713468153720350_2313355173534439129_n.jpg" alt="Nossa Foto">
+</div>
+
+<script>
+  const login = () => {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if (username.toLowerCase() === 'maria eduarda' && password === '170519') {
+      displayWelcomeMessage(); 
+      showLoveEffects(); 
+    } else {
+      alert('Login incorreto. Tente novamente!');
+    }
+  };
+
+  const displayWelcomeMessage = () => {
+    const loginContainer = document.getElementById('login-container');
+    const welcomeContainer = document.getElementById('welcome-container');
+
+    loginContainer.style.opacity = '0'; /* Fazendo o container de login desaparecer gradualmente */
+    setTimeout(() => {
+      loginContainer.style.display = 'none'; /* Oculta completamente o container de login */
+      welcomeContainer.style.display = 'block'; /* Exibe o container de boas-vindas */
+    }, 500); /* Adicionando um atraso para dar tempo à transição de desaparecimento */
+  };
+
+  const showLoveEffects = () => {
+    const welcomeContainer = document.getElementById('welcome-container');
+
+    for (let i = 0; i < 5; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart-animation';
+      heart.style.left = Math.random() * (welcomeContainer.clientWidth - 10) + 'px'; /* Limitando a posição dentro do container */
+      heart.style.top = Math.random() * (welcomeContainer.clientHeight - 10) + 'px'; /* Limitando a posição dentro do container */
+      welcomeContainer.appendChild(heart);
+    }
+
+    for (let i = 0; i < 3; i++) {
+      const ray = document.createElement('div');
+      ray.className = 'ray-of-love';
+      ray.style.left = Math.random() * (welcomeContainer.clientWidth - 1) + 'px'; /* Limitando a posição dentro do container */
+      ray.style.top = Math.random() * (welcomeContainer.clientHeight - 50) + 'px'; /* Limitando a posição dentro do container */
+      welcomeContainer.appendChild(ray);
+    }
+  };
+</script>
+
+</body>
+</html>
